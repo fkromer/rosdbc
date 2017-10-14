@@ -1,0 +1,21 @@
+<package>
+  <name>rosdbc</name>
+  <version>0.0.1</version>
+  <description>
+    ROS "Design By Contract"-related packages, including utility libraries for the main client libraries (roscpp, rospy).
+  </description>
+  <maintainer email="florian.kromer@mailbox.org">Florian Kromer</maintainer>
+  <license>Apache 2.0</license>
+
+  <url>https://github.com/fkromer/rosdbc</url>
+  <author email="florian.kromer@mailbox.org">Florian Kromer</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>roscpp</run_depend>
+  <run_depend>rospy</run_depend>
+
+  <export>
+    <metapackage/>
+  </export>
+</package>
