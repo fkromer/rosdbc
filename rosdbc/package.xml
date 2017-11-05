@@ -2,7 +2,8 @@
   <name>rosdbc</name>
   <version>0.0.1</version>
   <description>
-    ROS "Design By Contract"-related packages, including utility libraries for the main client libraries (roscpp, rospy).
+    ROS "Design By Contract"-related packages, including utility libraries for
+    the main client libraries (roscpp, rospy).
   </description>
   <maintainer email="florian.kromer@mailbox.org">Florian Kromer</maintainer>
   <license>Apache 2.0</license>
