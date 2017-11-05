@@ -52,3 +52,16 @@ is existing now no exception is raised.
 ### C++ package Usage
 
 C++ PACKAGE NOT EXISTING YET
+
+## Development
+
+### Executing the Python package library level tests
+
+install `python-nose`
+
+    sudo apt-get install python-nose
+
+run the tests (standalone)
+
+    cd <catkin-workspace>/src/rosdbc/clients/rosdbcpy/test
+    nosetests
