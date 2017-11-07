@@ -55,6 +55,11 @@ C++ PACKAGE NOT EXISTING YET
 
 ## Development
 
+### Executing all Python package tests
+
+    cd <catkin-workspace>
+    catkin_make run_tests_rosdbcpy
+
 ### Executing the Python package library level tests
 
 install `python-nose`
@@ -63,5 +68,9 @@ install `python-nose`
 
 run the tests (standalone)
 
-    cd <catkin-workspace>/src/rosdbc/clients/rosdbcpy/test
-    nosetests
+    cd <catkin-workspace>
+    catkin_make run_tests_rosdbcpy_nosetests
+
+### Get summary of Python package test results
+
+    catkin_test_results build/test_results/rosdbcpy/

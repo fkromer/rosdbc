@@ -17,6 +17,7 @@
 
 import sys
 import unittest
+
 import rosunit
 import rosdbcpy
 
@@ -27,3 +28,6 @@ class ParameterContractViolationExceptions(unittest.TestCase):
         # implicit setup: no roscore and no parameter existing
         with self.assertRaises(rosdbcpy.ParameterContractViolation):
             rosdbcpy.assert_parameter_not_existing("blub")
+
+if __name__ == '__main__':
+    rosunit.unitrun('test_parameter_checks', 'test_non_existing_parameters_raises_exception', ParameterContractViolationExceptions, coverage_packages=['rosdbcpy'])

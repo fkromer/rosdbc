@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(rosdbcpy)
-find_package(catkin REQUIRED COMPONENTS rospy std_msgs)
+find_package(catkin REQUIRED COMPONENTS rospy std_msgs rosunit)
 
 ################################################
 ## Declare ROS messages, services and actions ##
@@ -29,5 +29,6 @@ catkin_python_setup()
 ## Testing ##
 #############
 
-## Add folders to be run by python nosetests
-# catkin_add_nosetests(test)
+if(CATKIN_ENABLE_TESTING)
+  catkin_add_nosetests(test/test_parameter_checks.py)
+endif()
