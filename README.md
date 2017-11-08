@@ -9,14 +9,12 @@ introductory section and read section [Usage](#usage) to learn how to use
 `rosdbc` in your ROS nodes/nodelets.
 
   * [Introduction](#introduction)
-    * [Design by Contract (DbC)](#design-by-contract)
+    * [Design by Contract (DbC)](#design-by-contract-dbc)
     * [An executable function level contract example](#an-executable-function-level-contract-example)
     * [DbC in ROS](#dbc-in-ros)
     * [Benefits when using DbC](#benefits-when-using-dbc)
   * [Installation](#installation)
   * [Usage](#usage)
-  * [Table of contents](#table-of-contents)
-  * [Installation](#installation)
 
 ## Introduction
 
