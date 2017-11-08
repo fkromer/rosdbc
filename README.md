@@ -10,7 +10,7 @@ introductory section and read section [Usage](#usage) to learn how to use
 
   * [Introduction](#introduction)
     * [Design by Contract (DbC)](#design-by-contract-dbc)
-    * [An executable function level contract example](#an-executable-function-level-contract-example)
+    * [An executable function level contract example](#an-executable-function-level-example)
     * [DbC in ROS](#dbc-in-ros)
     * [Benefits when using DbC](#benefits-when-using-dbc)
   * [Installation](#installation)
@@ -143,11 +143,14 @@ familiar to me I use an
 
 In the examples context the function `void distribute(in int sum, out int first, out int second)`
 is the software component. The function `main()` invoked when the file is run as
-script is the client software. If the programmer of the function would introduce
-a bug like (`//second = sum + first;` instead of `second = sum - first;`) he
-would violate the contracts postcondition
-"out" block //second = sum + first;
-
+script is the client software. If the `main()` function would use invalid arguments
+like (`//distribute(-1, first, second);` instead of `distribute(123, first, second);`)
+it would violate the precondition contract ("in" block). If the programmer of
+the function would introduce a bug like (`//second = sum + first;` instead of
+`second = sum - first;`) he would violate the contracts postcondition contract
+("out" block). (In D the invariant contract would be defined in a "invariant"
+block in the functions parent context, means the struct or class it would be
+defined in.)
 
 If you want to execute the example you can install D (DMD compiler, runtime
 library, etc.) on Ubuntu and activate the D environment with
