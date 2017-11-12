@@ -207,7 +207,7 @@ is not existing). As the parameter is not existing yet an exception is raised.
 
     python
     >>> import rosdbcpy
-    >>> rosdbcpy.assert_parameter_not_existing("blub")
+    >>> rosdbcpy.assert_parameter_exists("blub")
         Traceback (most recent call last):
         File "<stdin>", line 1, in <module>
         File "<string>", line 40, in assert_parameter_not_existing
@@ -221,7 +221,7 @@ Open a new terminal and create the parameter.
 Check for the parameter existence in the "rosdbcpy" terminal. As the parameter
 is existing now no exception is raised.
 
-    >>> rosdbcpy.assert_parameter_not_existing("blub")
+    >>> rosdbcpy.assert_parameter_exists("blub")
     >>>
 
 ### C++ package Usage
