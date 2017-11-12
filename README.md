@@ -15,6 +15,7 @@ introductory section and read section [Usage](#usage) to learn how to use
     * [Benefits when using DbC](#benefits-when-using-dbc)
   * [Installation](#installation)
   * [Usage](#usage)
+  * [Development](#development)
 
 ## Introduction
 
@@ -248,3 +249,11 @@ run the tests (standalone)
 ### Get summary of Python package test results
 
     catkin_test_results build/test_results/rosdbcpy/
+
+### Python docstring syntax
+
+This project uses the Google syntax for docstrings which is easier to read than
+the ReStructuredText syntax. The
+[Google syntax](http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html)
+is supported in the documentation generation engine
+[Sphinx with the napoleon extension](http://www.sphinx-doc.org/en/stable/ext/napoleon.html?highlight=%3Aparam#google-vs-numpy).
