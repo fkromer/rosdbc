@@ -173,6 +173,14 @@ Finally the D environment needs to be deactivate with
 Now, as we know how the general DbC concept works we can adapt it to the ROS
 node level.
 
+To get and not loosing the "big picture" it is helpful to consider a
+classification tree which visualizes all influencing factors on DbC in ROS.
+
+![Image](doc/diagrams/dbc_pattern_classification_tree.png)
+
+This classification tree helps to derive patterns how DbC may be applied in ROS
+as well.
+
 Strict **asserts** from D may be "translated to" e.g. exception raises which
 enforce DbC very strictly. If one would use asserts consequently during the whole
 development of a ROS node this would mean that you would be enforced to develop
