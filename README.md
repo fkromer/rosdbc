@@ -170,7 +170,22 @@ Finally the D environment needs to be deactivate with
 
 ## DbC in ROS
 
-TODO
+Now, as we know how the general DbC concept works we can adapt it to the ROS
+node level.
+
+Strict **asserts** from D may be "translated to" e.g. exception raises which
+enforce DbC very strictly. If one would use asserts consequently during the whole
+development of a ROS node this would mean that you would be enforced to develop
+your ROS nodes in a test-driven development (TDD) like fashion. To prevent from
+exceptions beeing raised you would have to write node level tests before you
+implement your production code. This means asserts are suitable for ROS node
+interface definitions within a closes system of ROS nodes only.
+
+Weaker **enforces** from D may be "translated to" e.g. either calls to the ROS
+log system or to the ROS diagnostics system. This allows to track the state of
+ROS node interface contracts without interrupting the execution of a collection
+of ROS nodes when enforce contracts are violated. (This would be the case if
+**asserts** would have been used instead of **enforces**.)
 
 ### Benefits when using DbC
 
