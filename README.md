@@ -14,6 +14,7 @@ introductory section and read section [Usage](#usage) to learn how to use
     * [DbC in ROS](#dbc-in-ros)
     * [Benefits when thinking in terms of DbC](#Benefits-when-thinking-in-terms-of-dbc)
     * [Benefits when using DbC](#benefits-when-using-dbc)
+    * [Limitations when using DbC](#limitations-when-using-dbc)
   * [Installation](#installation)
   * [Usage](#usage)
   * [Development](#development)
@@ -220,6 +221,26 @@ use either a test driven development approach or a strict debugging environment.
 You need to either design and implement tests in advance to beeing able to run
 the node(s) under development or you need to run the node(s) in a strict debug
 environment which satisfies all contracts.
+
+### Limitations when using DbC
+
+DbC may help you a lot but may not help you w.r.t. some aspects of a ROS system.
+It is important to know about these limitations to be aware of it and to beeing
+able to consider it somehow else if required.
+
+* The quantity of possible check function implementations depend on the
+capabilities of the ROS client library. An example: ROS client library
+implementations will possibly not provide all functionality required to implement
+all check functions which come to mind. Particullarly the DbC implementation for
+non-mainline libraries could be affected by this limitation.
+* The capabilities of DbC to check contracts w.r.t. interfaces over time is very
+limited. An example: If the node has internal states which define the valid value
+range of a published topic this can be handled using conditional check function
+calls with according arguments to specify these varying ranges. However if the
+valid values of a published topic may vary over time within a node (state or not
+does not matter) it can be hard to implement according check function invocations.
+Often the incraesed effort will outweight the benefit and makes it not reasonable
+to use DbC then.
 
 ## Installation
 
