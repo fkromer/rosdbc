@@ -195,9 +195,30 @@ ROS node interface contracts without interrupting the execution of a collection
 of ROS nodes when enforce contracts are violated. (This would be the case if
 **asserts** would have been used instead of **enforces**.)
 
+### Benefits when thinking in terms of DbC
+
+Even if you do not want to or cannot apply DbC in a technical manner you will
+benefit a lot from thinking in terms of DbC.
+
+* You will design ROS nodes and ROS systems faster because you will consider
+relevant aspects in the node interface design earlier and explicitly.
+* You will design more robust ROS nodes and ROS systems because you will consider
+more aspects of the node interfaces explicitly.
+* You will be a more critical but more valuable analyst of ROS nodes and ROS systems.
+
 ### Benefits when using DbC
 
-TODO
+If you apply DbC in ROS in a technically manner you will have additional benefits:
+
+* You enfore compliance to contracts within a ROS system or collection of nodes
+which acts as closed entity within a ROS system (*assert checks*).
+* You have debugging and/or monitoring tool at hand if you integrate several
+node(s) and/or "closed" collection of nodes in a ROS system (*enforce checks*).
+* If you use DbC with *assert checks* consequently you will force yourself to
+use either a test driven development approach or a strict debugging environment.
+You need to either design and implement tests in advance to beeing able to run
+the node(s) under development or you need to run the node(s) in a strict debug
+environment which satisfies all contracts.
 
 ## Installation
 
