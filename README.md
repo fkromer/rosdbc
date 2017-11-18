@@ -245,6 +245,21 @@ or it may **provide or modify** data.
 
 TODO - description of location for checks dependent on combinations of classification tree entities
 
+When to check? -> Where in the source code?
+
+* parameters
+  * parameter, consumer, precondition: before the parameter is used
+  * parameter, provider, :
+* topic
+  * topic, publisher (provider), postcondition: before message is published over topic -> end of publish function
+  * topic, subscriber (consumer), precondition: after topic message is received -> start of subscribe callback function
+* service
+  * service, provider (client), goal, postcondition: before goal is requested -> before goal request is sent
+  * service, consumer (server), goal, precondition: after goal received -> start of action callback function
+  * service, provider (server), feedback, postcondition: before feedback is transmitted -> end of action callback function feedback part (before success is set)
+  * service, provider (server), result, postcondition: before result is transmitted -> end of action callback function (after success is set)
+* action
+
 ### Benefits when thinking in terms of DbC
 
 Even if you do not want to or cannot apply DbC in a technical manner you will
