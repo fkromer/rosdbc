@@ -12,7 +12,8 @@ introductory section and read section [Usage](#usage) to learn how to use
     * [Design by Contract (DbC)](#design-by-contract-dbc)
     * [An executable function level contract example](#an-executable-function-level-example)
     * [DbC in ROS](#dbc-in-ros)
-    * [Benefits when thinking in terms of DbC](#Benefits-when-thinking-in-terms-of-dbc)
+    * [DbC patterns](#dbc-patterns)
+    * [Benefits when thinking in terms of DbC](#benefits-when-thinking-in-terms-of-dbc)
     * [Benefits when using DbC](#benefits-when-using-dbc)
     * [Limitations when using DbC](#limitations-when-using-dbc)
   * [Installation](#installation)
@@ -170,7 +171,7 @@ Finally the D environment needs to be deactivate with
 
     deactivate
 
-## DbC in ROS
+### DbC in ROS
 
 Now, as we know how the general DbC concept works we can adapt it to the ROS
 node level.
@@ -182,6 +183,10 @@ classification tree which visualizes all influencing factors on DbC in ROS.
 
 This classification tree helps to derive patterns how DbC may be applied in ROS
 as well.
+
+#### Check
+
+We can use either checks of type **assert** or **enforce**.
 
 Strict **asserts** from D may be "translated to" e.g. exception raises which
 enforce DbC very strictly. If one would use asserts consequently during the whole
@@ -196,6 +201,49 @@ log system or to the ROS diagnostics system. This allows to track the state of
 ROS node interface contracts without interrupting the execution of a collection
 of ROS nodes when enforce contracts are violated. (This would be the case if
 **asserts** would have been used instead of **enforces**.)
+
+#### Contract
+
+The types of contracts **in**, **invariant** and **out** from D can be "translated"
+into the ROS node context almost 1-to-1.
+
+In D the checking of **precondition** contracts is done in **in** blocks of functions.
+**invariant** contracts are checked in **body** blocks of functions and/or
+[**invariant blocks**](https://dlang.org/spec/contracts.html#Invariants) of
+classes or structs. **postcondition** contracts are checked in **out** blocks of
+functions.
+
+In ROS we do not have **in**, **invariant** and **out** blocks. We add the
+checks to the source code as they are at suitable locations. The actual location
+depends on what type of **interface** and what type of interface **direction**
+we want to check.
+
+#### Interface
+
+In ROS we want to apply DbC on a higher level of abstraction than in D. This
+means we don't have the interfaces of a function for **precondition** and
+**postcondition** checks. And we don't have the scope of a class or struct for
+**invariant** checks.
+
+For **precondition** and **postcondition** checks we have **topics**, **services**
+and **actions** as primary (processing) interfaces instead. The behaviour of
+a node may depend on **parameters** as secondary (configuration) interfaces in
+addition.
+
+For **invariant** checks we have the scope of **node specific parameters**, the
+**parameters which relate to a "closed" collection of nodes** and other state
+based entities inside the node (e.g. a nodes state machine state or the state of
+an encapsulated database).
+
+#### Direction
+
+The last property which affects the location of an assert or enforce check is the
+direction of the interface. A node may either **consume** data via an interface
+or it may **provide or modify** data.
+
+### DbC patterns
+
+TODO - description of location for checks dependent on combinations of classification tree entities
 
 ### Benefits when thinking in terms of DbC
 
