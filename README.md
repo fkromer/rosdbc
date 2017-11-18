@@ -12,6 +12,7 @@ introductory section and read section [Usage](#usage) to learn how to use
     * [Design by Contract (DbC)](#design-by-contract-dbc)
     * [An executable function level contract example](#an-executable-function-level-example)
     * [DbC in ROS](#dbc-in-ros)
+    * [Benefits when thinking in terms of DbC](#Benefits-when-thinking-in-terms-of-dbc)
     * [Benefits when using DbC](#benefits-when-using-dbc)
   * [Installation](#installation)
   * [Usage](#usage)
