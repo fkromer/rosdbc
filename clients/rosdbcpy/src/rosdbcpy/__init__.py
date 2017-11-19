@@ -38,10 +38,23 @@ class ParameterValueViolation(ParameterContractViolation):
             name, msg="Parameter %s violated contract with value %s" % (name, value))
         self.value = value
 
+def _check_parameter_exists(name):
+    """
+    Checks if a parameter exists.
+
+    Args:
+        name (string): Name of the parameter.
+    Returns:
+        bool: True if existing, False if not existing.
+    """
+    if rospy.has_param(name):
+        return True
+    return False
+
 def assert_parameter_exists(name):
     """
     Indicates a contract violation if the parameter is expected to exist but if
-    it does not exist.
+    it does not exist by raising an exception.
 
     Args:
         name (string): Name of the parameter.
@@ -49,8 +62,19 @@ def assert_parameter_exists(name):
     Raises:
         ParameterContractViolation: Raised if parameter is not existing.
     """
-    if not rospy.has_param(name):
+    if not _check_parameter_exists(name):
         raise ParameterContractViolation(name, "Parameter %s not existing" % (name))
+
+def enforce_parameter_exists(name):
+    """
+    Indicates a contract violation if the parameter is expected to exist but if
+    it does not exist by logging or diagnostics.
+
+    Args:
+        name (string): Name of the parameter.
+    """
+    if not _check_parameter_exists(name):
+        rospy.logwarn("Parameter %s not existing" % (name))
 
 def assert_parameter_not_exists(name):
     """
