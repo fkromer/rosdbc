@@ -22,6 +22,9 @@ import rosunit
 import rosdbcpy
 import rospy
 import subprocess
+import time
+
+ROSCORE_STARTUP_WAIT_TIME_IN_SECS = 1
 
 class ParameterContractViolationExceptions(unittest.TestCase):
     """Tests for the parameter contract violation exceptions."""
@@ -29,10 +32,12 @@ class ParameterContractViolationExceptions(unittest.TestCase):
     def setUp(self):
         """Test class level setup executed before every test. Start the roscore."""
         self.roscore = subprocess.Popen("roscore")
+        time.sleep(ROSCORE_STARTUP_WAIT_TIME_IN_SECS)
 
     def tearDown(self):
         """Test class level teardown executed after every test. Stop the roscore."""
         self.roscore.terminate()
+        self.roscore.kill()
 
     def test_non_existing_parameters_raises_exception(self):
         """Verifies if an exception is raised due to a parameter which is
